@@ -18,11 +18,20 @@ class App extends Component {
       todo: [...this.state.todo, task]
     })
   }
+
+  removeTask(index){
+    this.setState({
+      todo: this.state.todo.filter((e, i) => {
+        return i !== index;
+      })
+    })
+    
+  }
   
   render() {
     const todo = this.state.todo.map((task, i) => {
       return(
-        <div className="col-md-4">
+        <div className="col-md-4" key={i}>
           <div className="card mt-4">
             <div className="card-header">
               <h3>{task.title}</h3>
@@ -33,6 +42,14 @@ class App extends Component {
             <div className="card-body">
               <p>{task.description}</p>
               <p>{task.responsible}</p>
+            </div>
+            <div className="card-footer">
+              <button
+                className="btn btn-danger"
+                onClick={this.removeTask.bind(this, i)}
+              >
+                Borrar
+              </button>
             </div>
           </div>
         </div>
