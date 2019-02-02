@@ -12,6 +12,8 @@ class App extends Component {
     this.state = { todo }
     this.addTask = this.addTask.bind(this);
   }
+
+  
   
   addTask(task){
     this.setState({
